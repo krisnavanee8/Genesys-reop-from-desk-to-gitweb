@@ -1,0 +1,19 @@
+<apex:page controller="locationController"> Location Table 
+<apex:messages style="color:red"> 
+</apex:messages> 
+<apex:form > 
+<apex:pageblock > 
+<apex:pageblocktable value="{!locationList}" var="locItem"> 
+<apex:column headervalue="Country"> 
+<apex:inputfield value="{!locItem.Country__c}"> 
+</apex:inputfield> 
+</apex:column> 
+<apex:column headervalue="State/Province"> 
+<apex:inputfield value="{!locItem.State__c}"> 
+</apex:inputfield> 
+</apex:column> 
+ 
+</apex:pageblocktable> 
+</apex:pageblock> 
+</apex:form> 
+</apex:page>

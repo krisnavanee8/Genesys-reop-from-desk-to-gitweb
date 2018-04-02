@@ -1,0 +1,36 @@
+<apex:page sidebar="false" controller="fetchingController" id="pageId" >
+<apex:form id="formId">
+<apex:pageBlock id="pageBlockId1" title="Books Available">
+<apex:pageBlockTable value="{!bookList}" var="bk" id="pageBlockTableId">
+   <apex:column headerValue="id">
+     <apex:outputText value="{!bk.id}"/>
+   </apex:column>
+<apex:column headerValue=" Name">
+<b>  {!bk.Name } </b> 
+</apex:column>
+<apex:column headerValue="Author">
+{!bk.Author__c}
+</apex:column>
+<apex:column headerValue="Title">
+  {!bk.Title__c} 
+  </apex:column>
+<apex:column headerValue="Price">
+{!bk.Price__c}
+</apex:column>
+
+<apex:column headerValue="Delete Record">
+    <apex:commandLink value="Delete"  action="{!deleteBook}" reRender="pageId">
+    <apex:param name="id" value="{!bk.id}"/>
+    </apex:commandLink> 
+</apex:column>
+  <apex:column headerValue="Update Record">
+      <apex:commandLink value="Update"  action="{!updateBook}" reRender="pageId">  
+    <apex:param name="uid" value="{!bk.id}"/> 
+     </apex:commandLink> 
+     
+ </apex:column>
+ </apex:pageBlockTable>
+</apex:pageBlock>
+
+</apex:form>
+</apex:page>

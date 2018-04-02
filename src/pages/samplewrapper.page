@@ -1,0 +1,30 @@
+<apex:page controller="samplewrapper">
+<apex:form id="frmid">
+<apex:pageBlock >
+<apex:pageBlockTable var="item" value="{!lstwrapper}">
+<apex:column >
+<apex:facet name="header">Sno</apex:facet>
+<apex:outputText value="{!item.sno}"/>
+</apex:column>
+
+<apex:column >
+<apex:facet name="header">Select</apex:facet>
+<apex:inputCheckbox value="{!item.isselect}"/>
+</apex:column>
+
+<apex:column >
+<apex:facet name="header">Name</apex:facet>
+<apex:outputText value="{!item.acc.Name}"/> <!-- acc variable refeer from line # 31 in controller-->
+</apex:column>
+
+<apex:column >
+<apex:facet name="header">Type</apex:facet>
+<apex:outputText value="{!item.acc.type}"/>
+</apex:column>
+
+
+</apex:pageBlockTable>
+</apex:pageBlock>
+</apex:form>
+
+</apex:page>

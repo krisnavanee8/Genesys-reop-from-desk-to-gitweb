@@ -1,0 +1,124 @@
+<apex:page controller="GridController" showHeader="false" standardStylesheets="false">
+<apex:form > 
+      <apex:pageBlock > 
+     <apex:pageBlockButtons location="bottom" >
+<apex:CommandButton Action="{!GetSelected}" value="Proceed" />
+      </apex:pageBlockButtons> 
+      
+     
+<apex:stylesheet value="//cdn.datatables.net/1.10.5/css/jquery.dataTables.css"/>
+<apex:includeScript value="//code.jquery.com/jquery-1.10.2.min.js"/>
+<apex:includeScript value="//cdn.datatables.net/1.10.5/js/jquery.dataTables.js"/>
+<div style="width:80%; margin-left:auto; margin-right:auto; margin-top:50px;">
+<table id="table_id" class="display">
+  <thead>
+    <tr>
+      <th><input type="checkbox" class="selectAll" checked=""/></th>
+      <th>Account Name</th>
+      <th>Industry</th>
+    </tr>
+  </thead>
+  <tbody>
+  <apex:repeat value="{!AccountWrappers}" var="acclist">
+      <tr>
+          <td><input type="checkbox" id="chk{!acclist.isRendered}" name="chk{!acclist.acc.id}"/></td>
+          <td>{!acclist.acc.name}</td>
+          <td>{!acclist.acc.Industry}</td>
+      </tr>
+   </apex:repeat>               
+   </tbody>
+</table>
+</div>
+<script>
+$(document).ready( function () {
+    $('#table_id').DataTable();
+    $('#chktrue').attr('disabled','true');
+} );
+
+(function($) {
+
+  'use strict';
+  
+  $.fn.extend({
+    checkboxes: function(options) {
+      // Default option
+      var defaults = {
+        itemChild: ''
+      };
+
+      var option = $.extend(defaults, options);
+
+      // Checked value function
+      function checkedValue(element, bool) {
+        if (bool) {
+          return element.each(function() {
+            $(this).prop('checked', true);
+          });
+        } else {
+          return element.each(function() {
+            $(this).prop('checked', false);
+          });
+        }
+        $(":checkbox").click(function(){
+    $("#id").text(this.value)
+  })
+
+      }
+
+      // Return checked or unchecked
+      return this.each(function() {
+        var obj = option,
+            $itemAll = $(this),
+            $itemChild = $('input[name^="' + obj.itemChild + '"]');
+
+        // Checked all checkbox before parent checked load page
+        if ($itemAll.is(':checked')) {
+          checkedValue($itemChild, true);
+        }
+
+        // Checked all or unchecked checkbox when parent checkbox checked or unchecked
+        $itemAll.change(function() {
+          var $self = $(this);
+
+          if ($self.is(':checked')) {
+            checkedValue($itemChild, true);
+          } else {
+            checkedValue($itemChild, false);
+          }
+        });
+
+        // Checked parent checkbox when all child checkbox checked
+        $itemChild.change(function() {
+          var flag = true;
+
+          if (!$itemChild.is(':checked')) {
+            console.log(!$itemChild.is(':checked'));
+            $itemAll.prop('checked', false);
+          }
+
+          $itemChild.each(function() {
+            var $self = $(this);
+            if (!$self.is(':checked')) {
+              flag = false;
+              return;
+            }
+          });
+
+          $itemAll.prop('checked', flag);
+        });
+
+      });
+    }
+  });
+})(jQuery);
+
+$(document).ready(function() {
+  $('.selectAll').checkboxes({
+    itemChild: 'chk'
+  });
+});
+</script>
+ 
+ </apex:pageBlock>  
+</apex:form> 
+</apex:page>

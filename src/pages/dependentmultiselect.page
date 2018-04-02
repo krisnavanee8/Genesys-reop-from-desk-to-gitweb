@@ -1,0 +1,23 @@
+<apex:page sidebar="false" controller="Multiselect" >
+  <apex:form id="frmid">
+  
+  
+  <apex:pageBlock >
+                         <!-- <apex:inputField value="{!Acc.SMART_Qualified__c}" label="Smart Qualified"><apex:outputLabel >Smart Qualified</apex:outputLabel>
+                           <apex:actionSupport event="onchange" reRender="frmid"/>  
+                           </apex:inputField> <br/> -->
+                           <apex:outputLabel >Region</apex:outputLabel>
+                            <apex:actionStatus id="actStatusId1" > <apex:facet name="start" > <img src="/img/loading.gif" /> </apex:facet> </apex:actionStatus>
+                            <apex:selectcheckboxes layout="pageDirection" value="{!selectedRegion}">    <br/>                                          
+                            <apex:selectoptions value="{!regionList}"  /> <br/>      
+                            </apex:selectcheckboxes>
+                          <br/>
+                           <apex:outputLabel >Country</apex:outputLabel>
+                             <apex:actionStatus id="actStatusId" > <apex:facet name="start" > <img src="/img/loading.gif" /> </apex:facet> </apex:actionStatus>
+                            <apex:selectcheckboxes layout="pageDirection"  value="{!selectedCountryIds}">
+                                      
+                            <apex:selectoptions value="{!countryList}" /> <br/> 
+                             </apex:selectcheckboxes> 
+   </apex:pageBlock>                        
+  </apex:form>
+</apex:page>

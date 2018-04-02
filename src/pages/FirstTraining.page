@@ -1,0 +1,44 @@
+<apex:page >
+<style>
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+</style>
+
+  <!-- Begin Default Content REMOVE THIS -->
+  <h1>Congratulations</h1>
+  This is your new Page
+  <apex:image url="{!URLFOR($Resource.babyimage)}"/>
+  <!-- End Default Content REMOVE THIS -->
+  <table id ="table" style="width:100" border="1">
+  <tr>
+    <th>Firstname</th>
+    <th>Lastname</th>
+    <th>Age</th> 
+     <tr>
+    <td>Jill</td>
+    <td>Smith</td>
+    <td>50</td>
+  </tr>
+  <tr>
+    <td>Eve</td>
+    <td>Jackson</td>
+    <td>94</td>
+  </tr>  
+  </tr>
+  
+  </table>
+</apex:page>

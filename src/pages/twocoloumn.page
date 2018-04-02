@@ -1,0 +1,38 @@
+<apex:page >
+    <style>
+        #col1{width:25%;display:inline-block;}
+        #col2{width:49%;display:inline-block;}
+    </style>
+    <apex:form >
+    <div >
+            <apex:pageblock title="PageBlock Header1">
+                <apex:pageblockSection title="Section title1">
+                    Field1: <apex:inputText />
+                </apex:pageblockSection>
+                <apex:pageblockButtons >
+                    <apex:commandButton value="Save"/>
+                </apex:pageblockButtons>
+            </apex:pageblock>
+        </div>
+        <div id="col1">
+            <apex:pageblock title="PageBlock Header1">
+                <apex:pageblockSection title="Section title1">
+                    Field1: <apex:inputText />
+                </apex:pageblockSection>
+                <apex:pageblockButtons >
+                    <apex:commandButton value="Save"/>
+                </apex:pageblockButtons>
+            </apex:pageblock>
+        </div>
+        <div id="col2">
+            <apex:pageblock title="PageBlock Header2">
+                <apex:pageblockSection title="Section title2">
+                    Field1: <apex:inputText />
+                </apex:pageblockSection>
+                <apex:pageblockButtons >
+                    <apex:commandButton value="Save"/>
+                </apex:pageblockButtons>
+            </apex:pageblock>
+        </div>       
+    </apex:form>
+</apex:page>
